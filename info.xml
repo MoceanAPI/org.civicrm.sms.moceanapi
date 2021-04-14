@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0.0"?>
 <extension key="org.civicrm.sms.moceanapi" type="module">
   <file>moceanapi_sms</file>
   <name>MoceanAPI SMS Provider</name>
