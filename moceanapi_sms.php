@@ -28,13 +28,13 @@ function moceanapi_sms_civicrm_xmlMenu(&$files) {
 function moceanapi_sms_civicrm_install() {
   $groupID = CRM_Core_DAO::getFieldValue('CRM_Core_DAO_OptionGroup','sms_provider_name','id','name');
   $params  =
-    array('option_group_id' => $groupID,
+    ['option_group_id' => $groupID,
       'label' => 'MoceanAPISMS',
       'value' => 'org.civicrm.sms.moceanapi',
       'name'  => 'moceanapisms',
       'is_default' => 1,
       'is_active'  => 1,
-      'version'    => 3,);
+      'version'    => 3,];
 
   civicrm_api3( 'option_value','create', $params );
 
@@ -60,7 +60,7 @@ function moceanapi_sms_civicrm_uninstall() {
   if ($optionID)
     CRM_Core_BAO_OptionValue::del($optionID);
 
-  $filter    =  array('name'  => 'org.civicrm.sms.moceanapi');
+  $filter    =  ['name'  => 'org.civicrm.sms.moceanapi'];
   $Providers =  CRM_SMS_BAO_Provider::getProviders(False, $filter, False);
   if ($Providers){
     foreach($Providers as $key => $value){
@@ -81,7 +81,7 @@ function moceanapi_sms_civicrm_enable() {
   if ($optionID)
     CRM_Core_BAO_OptionValue::setIsActive($optionID, TRUE);
 
-  $filter    =  array('name' => 'org.civicrm.sms.moceanapi');
+  $filter    =  ['name' => 'org.civicrm.sms.moceanapi'];
   $Providers =  CRM_SMS_BAO_Provider::getProviders(False, $filter, False);
   if ($Providers){
     foreach($Providers as $key => $value){
@@ -101,7 +101,7 @@ function moceanapi_sms_civicrm_disable() {
   if ($optionID)
     CRM_Core_BAO_OptionValue::setIsActive($optionID, FALSE);
 
-  $filter    =  array('name' =>  'org.civicrm.sms.moceanapi');
+  $filter    =  ['name' =>  'org.civicrm.sms.moceanapi'];
   $Providers =  CRM_SMS_BAO_Provider::getProviders(False, $filter, False);
   if ($Providers){
     foreach($Providers as $key => $value){

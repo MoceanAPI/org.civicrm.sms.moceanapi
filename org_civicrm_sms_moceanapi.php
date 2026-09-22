@@ -15,7 +15,7 @@ Class org_civicrm_sms_moceanapi extends CRM_SMS_Provider {
    * provider details
    * @var	string
    */
-  protected $_providerInfo = array();
+  protected $_providerInfo = [];
 
   /**
    * MoceanAPI API Server Session ID
@@ -39,7 +39,7 @@ Class org_civicrm_sms_moceanapi extends CRM_SMS_Provider {
    * @var object
    * @static
    */
-  static private $_singleton = array();
+  static private $_singleton = [];
 
   /**
    * Constructor
@@ -50,7 +50,7 @@ Class org_civicrm_sms_moceanapi extends CRM_SMS_Provider {
    * 
    * @return \org_civicrm_sms_moceanapi
    */
-  function __construct($provider = array( ), $skipAuth = FALSE) {
+  function __construct($provider = [ ], $skipAuth = FALSE) {
         // initialize vars
         $this->_apiType = CRM_Utils_Array::value('api_type', $provider, 'http');
         $this->_providerInfo = $provider;
@@ -87,13 +87,13 @@ Class org_civicrm_sms_moceanapi extends CRM_SMS_Provider {
    * @return object
    * @static
    */
-    static function &singleton($providerParams = array(), $force = FALSE) {
+    static function &singleton($providerParams = [], $force = FALSE) {
         $providerID = CRM_Utils_Array::value('provider_id', $providerParams);
         $skipAuth   = $providerID ? FALSE : TRUE;
         $cacheKey   = (int) $providerID;
 
         if (!isset(self::$_singleton[$cacheKey]) || $force) {
-            $provider = array();
+            $provider = [];
             if ($providerID) {
                 $provider = CRM_SMS_BAO_Provider::getProviderInfo($providerID);
             }
@@ -120,15 +120,15 @@ Class org_civicrm_sms_moceanapi extends CRM_SMS_Provider {
         }
 
         if ($this->_apiType = 'http') {
-            $postDataArray = array( 
+            $postDataArray = [
                 'mocean-api-key' => $user,
                 'mocean-api-secret' => $password,
                 'mocean-from' => $from,
                 'mocean-text' => $message,
-                'mocean-to' => array($recipients),
+                'mocean-to' => [$recipients],
                 'mocean-medium'  => 'civicrm',
                 'mocean-resp-format' => 'json'
-            );
+            ];
 
             //connection to the api with the curl command
             curl_setopt($this->_ch, CURLOPT_URL, $url);
