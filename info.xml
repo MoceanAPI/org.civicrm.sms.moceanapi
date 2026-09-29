@@ -18,7 +18,7 @@
   <version>1.0.1</version>
   <develStage>stable</develStage>
   <compatibility>
-    <ver>5.0</ver>
+    <ver>5.26</ver>
   </compatibility>
   <comments>For support, please contact project team on https://moceanapi.com/support</comments>
   <classloader>
